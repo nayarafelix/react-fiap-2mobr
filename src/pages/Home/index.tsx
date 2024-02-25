@@ -1,22 +1,17 @@
-import { HomeProps } from './types'
 import { useHome } from "./hooks/useHome"
-import { Button } from './components'
+import { Button } from '../../components'
+import { Container } from "./styles"
 
-function Home ({ lastName, age }: HomeProps) {
-    const { name, handleName, email, handleEmail } = useHome()
+function Home () {
+    const { handleGoToSearch } = useHome()
 
     return (
-        <div>
+        <Container>
             <h1>FIAP</h1>
-            <span>
-                {name} {lastName} {" "}
-                {age && `e a idade é ${age}`}
-            </span>
-            <p/>
-            <input type="email" value={email} onChange={handleEmail} name="email" id="email" />
-            <Button onClick={handleName} />
-        </div>
+            <h2>Educação que transforma!</h2>
+            <Button text="Buscar usuário do Github" onClick={handleGoToSearch}/>
+        </Container>
     )
 }
 
-export { Home }
+export {Home}

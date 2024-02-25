@@ -1,26 +1,18 @@
-import { ChangeEvent, useEffect, useState} from "react";
-import { UserName } from '../types'
+import { useNavigate } from 'react-router-dom'
+import {toast} from "react-toastify";
 
 export function useHome() {
-    const [name, setName] = useState<UserName>("Fulano")
-    const [email, setEmail] = useState<string>("")
 
-    function handleName() {
-        setName("Nayara")
+    const navigate = useNavigate()
+
+    function handleGoToSearch() {
+        navigate('/search')
+        toast.success("Sucesso! Pronto para pesquisar!", {
+            position: "top-right",
+        })
     }
-
-    function handleEmail(event: ChangeEvent<HTMLInputElement>) {
-        setEmail(event.target.value)
-    }
-
-    useEffect(() => {
-
-    }, [name])
 
     return {
-        name,
-        handleName,
-        email,
-        handleEmail
+        handleGoToSearch
     }
 }
